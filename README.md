@@ -1,6 +1,8 @@
 # opta-planner-timetabling-exercise Project
 
-### I'm following the tutorial by [Geoffrey De Smet](https://youtu.be/7IuOA9n6kh0) 
+### I'm following the tutorial by [Geoffrey De Smet](https://youtu.be/7IuOA9n6kh0)
+
+-----
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
