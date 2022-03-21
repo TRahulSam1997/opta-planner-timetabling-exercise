@@ -1,9 +1,6 @@
 package org.acme.timetabling.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Lesson {
@@ -16,7 +13,9 @@ public class Lesson {
     private String teacher;
     private String studentGroup;
 
+    @ManyToOne
     private TimeSlot timeSlot;
+    @ManyToOne
     private Room room;
 
     public Lesson() {
