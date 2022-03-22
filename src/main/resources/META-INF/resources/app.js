@@ -47,7 +47,7 @@ function refreshTimeTable() {
     const tbodyByRoom = $("<tbody>").appendTo(timeTableByRoom);
     const tbodyByTeacher = $("<tbody>").appendTo(timeTableByTeacher);
     const tbodyByStudentGroup = $("<tbody>").appendTo(timeTableByStudentGroup);
-    $.each(timeTable.timeslotList, (index, timeslot) => {
+    $.each(timeTable.timeSlotList, (index, timeslot) => {
       const rowByRoom = $("<tr>").appendTo(tbodyByRoom);
       rowByRoom
         .append($(`<th class="align-middle"/>`)

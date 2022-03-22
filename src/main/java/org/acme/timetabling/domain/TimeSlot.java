@@ -1,5 +1,7 @@
 package org.acme.timetabling.domain;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @Entity
-public class TimeSlot {
+public class TimeSlot extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,9 +1,11 @@
 package org.acme.timetabling.domain;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 import javax.persistence.*;
 
 @Entity
-public class Lesson {
+public class Lesson extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
