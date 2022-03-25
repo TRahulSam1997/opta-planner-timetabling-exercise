@@ -7,6 +7,7 @@ import org.acme.timetabling.domain.TimeTable;
 import org.optaplanner.core.api.solver.SolverManager;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.time.DayOfWeek;
@@ -36,13 +37,20 @@ public class TimeTableResource {
                 this::save);
     }
 
+    @Transactional
     protected TimeTable findById(Long id) {
-        return new TimeTable(TimeSlot.listAll(),
+        return new TimeTable(
+                TimeSlot.listAll(),
                 Room.listAll(),
                 Lesson.listAll());
     }
 
+    @Transactional
     protected void save(TimeTable timeTable) {
-
+        for (Lesson lesson : timeTable.getLessonList()) {
+            Lesson attachedLesson = Lesson.findById(lesson.getId());
+            attachedLesson.setTimeSlot(lesson.getTimeSlot());
+            attachedLesson.setRoom(lesson.getRoom());
+        }
     }
 }

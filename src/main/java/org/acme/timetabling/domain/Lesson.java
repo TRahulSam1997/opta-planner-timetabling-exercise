@@ -56,8 +56,16 @@ public class Lesson extends PanacheEntityBase {
         return timeSlot;
     }
 
+    public void setTimeSlot(TimeSlot timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
     public Room getRoom() {
         return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     @Override

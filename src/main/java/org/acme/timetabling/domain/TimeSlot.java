@@ -56,5 +56,4 @@ public class TimeSlot extends PanacheEntityBase {
                 '}';
     }
 
-
 }
