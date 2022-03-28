@@ -6,6 +6,7 @@ import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.solver.SolverStatus;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class TimeTable {
 
     @PlanningScore
     private HardSoftScore score;
+    private SolverStatus solverStatus;
 
     public TimeTable() {
 
@@ -44,5 +46,17 @@ public class TimeTable {
 
     public List<Lesson> getLessonList() {
         return lessonList;
+    }
+
+    public HardSoftScore getScore() {
+        return score;
+    }
+
+    public SolverStatus getSolverStatus() {
+        return solverStatus;
+    }
+
+    public void setSolverStatus(SolverStatus solverStatus) {
+        this.solverStatus = solverStatus;
     }
 }

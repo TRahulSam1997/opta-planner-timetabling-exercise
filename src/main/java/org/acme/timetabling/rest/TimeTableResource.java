@@ -4,7 +4,10 @@ import org.acme.timetabling.domain.Lesson;
 import org.acme.timetabling.domain.Room;
 import org.acme.timetabling.domain.TimeSlot;
 import org.acme.timetabling.domain.TimeTable;
+import org.optaplanner.core.api.score.ScoreManager;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.solver.SolverManager;
+import org.optaplanner.core.api.solver.SolverStatus;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -23,10 +26,21 @@ public class TimeTableResource {
 
     @Inject
     SolverManager<TimeTable, Long> solverManager;
+    @Inject
+    ScoreManager<TimeTable, HardSoftScore> scoreManager;
+
 
     @GET
     public TimeTable getTimeTable() {
-        return findById(SINGLETON_TIME_TABLE_ID);
+        SolverStatus solverStatus = getSolverStatus();
+        TimeTable solution = findById(SINGLETON_TIME_TABLE_ID);
+        scoreManager.updateScore(solution); // Sets the score
+        solution.setSolverStatus(solverStatus);
+        return solution;
+    }
+
+    private SolverStatus getSolverStatus() {
+        return solverManager.getSolverStatus(SINGLETON_TIME_TABLE_ID);
     }
 
     @POST
